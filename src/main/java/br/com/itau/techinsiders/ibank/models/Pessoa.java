@@ -17,7 +17,7 @@ public class Pessoa implements Serializable {
     private static final long serialVersionUID = 5859808752828620408L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)  //GenerationType.AUTO)
     private Long id;
  
     @Column(name = "pes_nome")

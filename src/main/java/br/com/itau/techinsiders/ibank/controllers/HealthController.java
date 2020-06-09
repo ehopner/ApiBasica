@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthController {
  
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+    @RequestMapping(path = "/status", method = RequestMethod.GET)
     public String status() {
         return "{\"status\": \"running\"}";
     }

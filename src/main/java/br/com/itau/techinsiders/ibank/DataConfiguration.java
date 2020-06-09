@@ -13,26 +13,26 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 public class DataConfiguration {
 
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/ibank?useSSL=false&serverTimezone=UTC");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
+    // @Bean
+    // public DataSource dataSource() {
+    //     DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    //     dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+    //     dataSource.setUrl("jdbc:mysql://localhost:3306/ibank?useSSL=false&serverTimezone=UTC");
+    //     dataSource.setUsername("root");
+    //     dataSource.setPassword("root");
         
-        return dataSource;
+    //     return dataSource;
         
-    }
+    // }
     
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
         
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        adapter.setDatabase(Database.MYSQL);
+        adapter.setDatabase(Database.POSTGRESQL);
         adapter.setShowSql(true);
         adapter.setGenerateDdl(true);
-        adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
+        adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQLDialect");
         adapter.setPrepareConnection(true);
         
         return adapter;

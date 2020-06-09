@@ -13,17 +13,17 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 public class DataConfiguration {
 
 
-    // @Bean
-    // public DataSource dataSource() {
-    //     DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    //     dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    //     dataSource.setUrl("jdbc:mysql://localhost:3306/ibank?useSSL=false&serverTimezone=UTC");
-    //     dataSource.setUsername("root");
-    //     dataSource.setPassword("root");
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgres://argkxyujnnsotw:6c80ec6609d789e85e3ae128233ad9bd2a92dd458cd3047dad081962d8dd75af@ec2-3-223-21-106.compute-1.amazonaws.com:5432/d1s8h8hcs5toov");
+        dataSource.setUsername("argkxyujnnsotw");
+        dataSource.setPassword("6c80ec6609d789e85e3ae128233ad9bd2a92dd458cd3047dad081962d8dd75af");
         
-    //     return dataSource;
+        return dataSource;
         
-    // }
+    }
     
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {

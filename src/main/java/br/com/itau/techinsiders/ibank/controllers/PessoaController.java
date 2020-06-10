@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.itau.techinsiders.ibank.models.Pessoa;
 import br.com.itau.techinsiders.ibank.repository.PessoaRepository;
 
+@CrossOrigin
 @RestController
 public class PessoaController {
 
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    @CrossOrigin(origins = "*")
     @PostMapping(path = "/pessoas", consumes = "application/json", produces = "application/json")
     public Pessoa addPessoa(@RequestBody final Pessoa novaPessoa) {
         //PessoaRepository pr = new PessoaRepository()

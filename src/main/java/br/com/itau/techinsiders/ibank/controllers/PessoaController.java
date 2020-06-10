@@ -1,6 +1,7 @@
 package br.com.itau.techinsiders.ibank.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.itau.techinsiders.ibank.models.Pessoa;
 import br.com.itau.techinsiders.ibank.repository.PessoaRepository;
 
-@CrossOrigin
+
 @RestController
+@CrossOrigin
 public class PessoaController {
 
     @Autowired

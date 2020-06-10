@@ -16,7 +16,7 @@ public class PessoaController {
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500/")
+    @CrossOrigin(origins = "*")
     @PostMapping(path = "/pessoas", consumes = "application/json", produces = "application/json")
     public Pessoa addPessoa(@RequestBody final Pessoa novaPessoa) {
         //PessoaRepository pr = new PessoaRepository()

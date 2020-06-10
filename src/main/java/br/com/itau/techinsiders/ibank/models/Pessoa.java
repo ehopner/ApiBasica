@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
  
 @Entity
 public class Pessoa implements Serializable {
@@ -17,7 +19,8 @@ public class Pessoa implements Serializable {
     private static final long serialVersionUID = 5859808752828620408L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)  //GenerationType.AUTO)
+    @GeneratedValue(generator = "increment")  //GenerationType.AUTO)
+    @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
  
     @Column(name = "pes_nome")

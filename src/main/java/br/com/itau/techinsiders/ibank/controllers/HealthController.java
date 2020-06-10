@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
  
 @RestController
+//@CrossOrigin
 public class HealthController {
  
     @RequestMapping(path = "/status", method = RequestMethod.GET)

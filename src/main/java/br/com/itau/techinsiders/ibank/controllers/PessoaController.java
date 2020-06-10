@@ -3,6 +3,7 @@ package br.com.itau.techinsiders.ibank.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,13 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.itau.techinsiders.ibank.models.Pessoa;
 import br.com.itau.techinsiders.ibank.repository.PessoaRepository;
 
+
 @RestController
+@CrossOrigin
 public class PessoaController {
 
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500/")
     @PostMapping(path = "/pessoas", consumes = "application/json", produces = "application/json")
     public Pessoa addPessoa(@RequestBody final Pessoa novaPessoa) {
         // PessoaRepository pr = new PessoaRepository()

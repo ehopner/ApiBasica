@@ -24,7 +24,7 @@ public class PessoaController {
     }
 
     @GetMapping(path = "/pessoas", produces = "application/json")
-    public Iterable exibePessoas() {
+    public Iterable<Pessoa> exibePessoas() {
         //PessoaRepository pr = new PessoaRepository()
         
         return pessoaRepository.findAll();

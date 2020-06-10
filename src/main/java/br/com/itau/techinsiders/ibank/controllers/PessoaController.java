@@ -1,6 +1,7 @@
 package br.com.itau.techinsiders.ibank.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,11 +16,20 @@ public class PessoaController {
     private PessoaRepository pessoaRepository;
 
     @PostMapping(path = "/pessoas", consumes = "application/json", produces = "application/json")
-    public Pessoa addPessoa(@RequestBody Pessoa novaPessoa) {
+    public Pessoa addPessoa(@RequestBody final Pessoa novaPessoa) {
         //PessoaRepository pr = new PessoaRepository()
-        Pessoa pessoaInserida = pessoaRepository.save(novaPessoa);
+        final Pessoa pessoaInserida = pessoaRepository.save(novaPessoa);
         return pessoaInserida;
+        
+    }
+
+    @GetMapping(path = "/pessoas", produces = "application/json")
+    public Iterable exibePessoas() {
+        //PessoaRepository pr = new PessoaRepository()
+        
+        return pessoaRepository.findAll();
         
     }
     
 }
+// findAll

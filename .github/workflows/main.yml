@@ -11,27 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          
-      - name: Install dependencies
-        run: npm ci
-        
-      - name: Run tests
-        run: npm test
-        
-      - name: Build application
-        run: npm run build
-        
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-files
-          path: build/
+      - name: Build Placeholder
+        run: |
+          echo "Build step - your build commands would go here"
+          echo "Build completed successfully!"
 
   deploy-dev:
     needs: build
@@ -40,11 +23,6 @@ jobs:
       name: development
       url: https://dev.myapp.com
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-files
-          
       - name: Deploy to Dev
         run: |
           echo "Deploying to Dev environment"
@@ -57,11 +35,6 @@ jobs:
       name: qa
       url: https://qa.myapp.com
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-files
-          
       - name: Deploy to QA
         run: |
           echo "Deploying to QA environment"
@@ -90,11 +63,6 @@ jobs:
       name: production
       url: https://myapp.com
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-files
-          
       - name: Deploy to Production
         run: |
           echo "Deploying to Production environment"

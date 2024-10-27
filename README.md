@@ -1,2 +1,2 @@
 adicionar o readme aqui
-teste da pipe
+pipeline em funcionamento. agora vai.

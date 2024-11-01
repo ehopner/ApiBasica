@@ -4,3 +4,4 @@ teste de novo
 dfbgdfgdfgdfg
 via branch
 validar execução da nova pipé
+adicionadas variaveis

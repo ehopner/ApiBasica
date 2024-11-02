@@ -60,29 +60,26 @@ jobs:
   # type of machine to run the job on
     runs-on: ubuntu-latest
     name: 'ServiceNow DevOps Change'
-    steps:
+    steps:     
       - name: ServiceNow Change
-        uses: ServiceNow/servicenow-devops-change@v3.0.0
+        uses: ServiceNow/servicenow-devops-change@v4.0.0
+        id: create
         with:
-        # Devops Integration Token
-          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-        # ServiceNow Instance URL
+          devops-integration-token: ${{ secrets.SN_DEVOPS_INTEGRATION_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-        # Orchestration Tool Id
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-        # GitHub Context
           context-github: ${{ toJSON(github) }}
-        # Display Name of the Job
-          job-name: 'ServiceNow DevOps Change'
-          change-request: '{"setCloseCode":"true","attributes":{"short_description":"Automated Software Deployment","description":"Automated Software Deployment.","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
+          job-name: 'Deploy'
+          change-request: '{"setCloseCode":"true","autoCloseChange":true,"attributes":{"short_description":"Automated Software Deployment","description":"Automated Software Deployment.","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab; When the change is approved the implementation happens automated by the CICD pipeline within the change planned start and end time window.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed"}}'
           interval: '100'
           timeout: '3600'
           changeCreationTimeOut: '3600'
           abortOnChangeCreationFailure: true
           abortOnChangeStepTimeout: true
+          deployment-gate: '{"environment":"deploymentgate","jobName":"Deploy"}'
       - name: Output of Change Creation
-        run: echo "change-request-number = ${{ steps.create.outputs.change-request-number }} and change-request-sys-id = ${{ steps.create.outputs.change-request-sys-id }} " >> $GITHUB_OUTPUT
-
+        run: echo "change-request-number = ${{ steps.create.outputs.change-request-number }}" >> $GITHUB_OUTPUT
+        
   deploy-prod:
     needs: ServiceNowDevOpsChange
     runs-on: ubuntu-latest
